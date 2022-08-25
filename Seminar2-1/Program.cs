@@ -1,54 +1,97 @@
-﻿/* Поиск максимума из 9-ти чисел (простой способ)
-int a1 = 15;
-int b1 = 21;
-int c1 = 39;
-int a2 = 12;
-int b2 = 23;
-int c2 = 33;
-int a3 = 13;
-int b3 = 23;
-int c3 = 33;
+﻿//Напишите программу, которая выводит случайное трех значное число и удаляет вторую цифру этого числа
+// int CutNumber(){
+//     int num = new Random().Next(100, 1000);
+//     Console.WriteLine("Number is: " + num);
+//     int dec = num / 100;
+//     int ed = num % 10;
+//     int result = dec*10 + ed;
+//     return result;
+// }
 
-int max = a1;
-if(b1 > max) max = b1;
-if(c1 > max) max = c1;
-
-if(a2 > max) max = a2;
-if(b2 > max) max = b2;
-if(c2 > max) max = c2;
-
-if(a3 > max) max = a3;
-if(b3 > max) max = b3;
-if(c3 > max) max = c3;
-
-Console.WriteLine(max);
-*/
+// int number = CutNumber();
+// Console.WriteLine("Cutted number: " + number);
 
 
+//Программа для перемножения двух факториалов чисел
+// int Factorial (int num){
+//     int current=1;
+//     int fact=1;
 
-//Поиск максимума из 9-ти чисел (способ с помощью функции/метода)
+//     while(current <= num){
+//         fact *= current; //fact = fact * current;
+//         current++;
+//     }
+//     return fact;
+// }
 
-int Max(int arg1, int arg2, int arg3){
-    int result = arg1;
-    if(arg2 > result) result = arg2;
-    if(arg3 > result) result = arg3;
-    return result;
+// int result = Factorial(12) * Factorial(10);
+// Console.WriteLine("Your result is: " + result);
+
+
+//Написать программу, которая выводит случайное число из диапазона [10, 99], а затем показывает максимальное число в выведенном
+// int MaxNum(){
+//     int num = new Random().Next(10, 100);
+//     Console.WriteLine("Your number is " + num);
+//     int dec = num / 10;
+//     int ed = num % 10;
+//     if(dec > ed){
+//         return dec;
+//     }
+//     else{
+//         return ed;
+//     }
+// }
+
+// Console.WriteLine("Max number is " + MaxNum());
+
+
+//Напишите программу, которая на вход принимает число и проверяет, кратно ли оно одновременно 7 и 23
+// void Crat(int num){
+//     if(num % 7 == 0 && num % 23 == 0) Console.WriteLine("WoW! your number KRATNOE 7 & 23");
+//     else Console.WriteLine("Your number ne KRATNOE");
+// }
+
+// Console.Write("Enter your number: ");
+// int num1 = Convert.ToInt32(Console.ReadLine());
+// Crat(num1);
+
+
+//Напишите программу, которая принимает на вход два числа и проверяет, является ли одно число квадратом другого
+// void CheckQuad(int num1, int num2){ //Функция проверяет является ли первое число квадратом второго
+// if(num1 == num2*num2) Console.WriteLine("Число " + num1 + " является квадратом числа " + num2);
+// else Console.WriteLine("Число " + num1 + " не является квадратом числа " + num2);
+// }
+
+// Console.Write("Enter first number: ");
+// int num1 = Convert.ToInt32(Console.ReadLine());
+
+// Console.Write("Enter second number: ");
+// int num2 = Convert.ToInt32(Console.ReadLine());
+// CheckQuad(num1, num2);
+// CheckQuad(num2, num1);
+
+
+//Напишите программу, которая принимает на вход два числа и проверяет, является ли второе число кратно первому. 
+//Если число 2 не кратно 1, то выводит остаток от деления
+int Check(int num1, int num2){ 
+    if(num2 % num1 != 0){
+        int result = num2 % num1;
+        return result;
+    }
+    else return 0;
 }
 
-int a1 = 15;
-int b1 = 21;
-int c1 = 39;
-int a2 = 12;
-int b2 = 23;
-int c2 = 33;
-int a3 = 13;
-int b3 = 23;
-int c3 = 33;
+Console.Write("Enter first number: ");
+int num1 = Convert.ToInt32(Console.ReadLine());
 
-int max1 = Max(a1, b1, c1);
-int max2 = Max(a2, b2, c2);
-int max3 = Max(a3, b3, c3);
-int max = Max(max1, max2, max3);
+Console.Write("Enter second number: ");
+int num2 = Convert.ToInt32(Console.ReadLine());
 
-Console.WriteLine(max);
+if(num1 == 0 || num2 == 0) Console.WriteLine("На ноль делить нельзя");
+else{
+    int result = Check(num1, num2);
+    if(result == 0) Console.WriteLine("Второе число кратно первому");
+    else Console.WriteLine("Второе число не кратно первому. Остаток от деления: " + result);
+}
+
 
