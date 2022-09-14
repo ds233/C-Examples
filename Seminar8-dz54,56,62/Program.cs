@@ -120,19 +120,39 @@ void Show2dArray(int[,] array)
 // 12 13 14 05
 // 11 16 15 06
 // 10 09 08 07
+// int[,] FillSpiralArray(int row, int col)
+// {
+//     int[,] array = new int[row, col];
+
+//     for (int i = 1; i - 1 < array.GetLength(1); i++) array[0, i - 1] = i;
+//     for (int i = 1; i < array.GetLength(0); i++) array[i, array.GetLength(1) - 1] = array[i - 1, array.GetLength(1) - 1] + 1;
+//     for (int i = 1; i < array.GetLength(1); i++) array[array.GetLength(0) - 1, array.GetLength(1) - i - 1] = array[array.GetLength(0) - 1, array.GetLength(1) - i] + 1;
+//     for (int i = 1; i < array.GetLength(0) - 1; i++) array[array.GetLength(0) - i - 1, 0] = array[array.GetLength(0) - i, 0] + 1;
+//     for (int i = 1; i < array.GetLength(1) - 1; i++) array[1, i] = array[1, i - 1] + 1;
+//     for (int i = 2; i < array.GetLength(0) - 1; i++) array[i, array.GetLength(1) - 2] = array[i - 1, array.GetLength(1) - 2] + 1;
+//     for (int i = 2; i < array.GetLength(1) - 1; i++) array[array.GetLength(0) - 2, array.GetLength(1) - i - 1] = array[array.GetLength(0) - 2, array.GetLength(1) - i] + 1;
+//     return array;
+// }
+
+// Show2dArray(FillSpiralArray(4, 4));
+
+//ДОРАБОТАННАЯ ВЕРСИЯ, СТРОИТ СПИРАЛЬ ДЛЯ ЛЮБОГО МАССИВА (КРОМЕ 3Х3??)
 int[,] FillSpiralArray(int row, int col)
 {
     int[,] array = new int[row, col];
-
-    for (int i = 1; i - 1 < array.GetLength(1); i++) array[0, i - 1] = i;
-    for (int i = 1; i < array.GetLength(0); i++) array[i, array.GetLength(1) - 1] = array[i - 1, array.GetLength(1) - 1] + 1;
-    for (int i = 1; i < array.GetLength(1); i++) array[array.GetLength(0) - 1, array.GetLength(1) - i - 1] = array[array.GetLength(0) - 1, array.GetLength(1) - i] + 1;
-    for (int i = 1; i < array.GetLength(0) - 1; i++) array[array.GetLength(0) - i - 1, 0] = array[array.GetLength(0) - i, 0] + 1;
-    for (int i = 1; i < array.GetLength(1) - 1; i++) array[1, i] = array[1, i - 1] + 1;
-    for (int i = 2; i < array.GetLength(0) - 1; i++) array[i, array.GetLength(1) - 2] = array[i - 1, array.GetLength(1) - 2] + 1;
-    for (int i = 2; i < array.GetLength(1) - 1; i++) array[array.GetLength(0) - 2, array.GetLength(1) - i - 1] = array[array.GetLength(0) - 2, array.GetLength(1) - i] + 1;
+    array[0,0] = 1;
+    for (int k = 1; k < row-1; k++)
+    {
+        for (int i = 1; i < array.GetLength(1); i++) if (array[k - 1, i] == 0) array[k - 1, i] = array[k - 1, i - 1] + 1;
+        for (int i = 1; i < array.GetLength(0); i++) if (array[i, array.GetLength(1) - k] == 0) array[i, array.GetLength(1) - k] = array[i - 1, array.GetLength(1) - k] + 1;
+        for (int i = 1; i < array.GetLength(1)-k+1; i++) if (array[array.GetLength(0) - k, array.GetLength(1) - i - k] == 0) array[array.GetLength(0) - k, array.GetLength(1) - i - k] = array[array.GetLength(0) - k, array.GetLength(1) - i - k + 1] + 1;
+        for (int i = 1; i < array.GetLength(0) - k; i++) if (array[array.GetLength(0) - i - k, k - 1] == 0) array[array.GetLength(0) - i - k, k - 1] = array[array.GetLength(0) - i - k + 1, k - 1] + 1;
+    }
     return array;
 }
+Console.Write("Введите количество строк: ");
+int row = Convert.ToInt32(Console.ReadLine());
+Console.Write("Введите количество столбцов: ");
+int col = Convert.ToInt32(Console.ReadLine());
 
-Show2dArray(FillSpiralArray(4, 4));
-
+Show2dArray(FillSpiralArray(row, col));
