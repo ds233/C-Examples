@@ -141,7 +141,7 @@ int[,] FillSpiralArray(int row, int col)
 {
     int[,] array = new int[row, col];
     array[0,0] = 1;
-    for (int k = 1; k < row-1; k++)
+    for (int k = 1; k <= row-1; k++)
     {
         for (int i = 1; i < array.GetLength(1); i++) if (array[k - 1, i] == 0) array[k - 1, i] = array[k - 1, i - 1] + 1;
         for (int i = 1; i < array.GetLength(0); i++) if (array[i, array.GetLength(1) - k] == 0) array[i, array.GetLength(1) - k] = array[i - 1, array.GetLength(1) - k] + 1;
